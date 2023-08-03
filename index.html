@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Just a Dream</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Flower+Decorative&display=swap">
 
 	<style type="text/css">
 
@@ -13,85 +14,100 @@
 			background-size: cover;
 			overflow: hidden;
 		}
-		img {
-			display: block;
-			margin-left: auto;
-  			margin-right: auto;
-  			margin-top: 45px;
-  			width: 28%;
-  			border: 5px solid #eb6cb1;
-		}
+		h1 {
+			text-align: center;
+  			margin-top: 60px;
+  			color: white;
+            font-size: 50px;
+            font-family: 'Flower Decorative', cursive;
+            text-shadow: 0 0 10px #FF0000, 0 0 10px #0000FF;
+        }
+        .container {
+            position: relative;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+
+        }
 		.button {
-			position: absolute;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			display: flex;
-			width: 110px;
-			height: 33px;
+            position: absolute;
+            margin-bottom: 20px;
+            width: 200px;
+			height: 50px;
 			align-items: center;
 			justify-content: center;
 			background-color: #fa7fc2;
 			color: white;
 			border: 3px solid #f04da5;
 			border-radius: 10px;
-			font-size: 18px;
-			font-family: 'Courier New', monospace;
+			font-size: 19px;
+			font-family: 'Flower Decorative', cursive;
 			font-weight: bold;
 		}
-		#yesButton {
-			left: 45%;
-		}
-		#yesButton:hover {
+		button:hover {
 			background-color: #f04da5;
 		}
-		#noButton {
-			left: 55%;
-		}
-		@keyframes heartAnimation {
+        .button:nth-child(1) {
+            top: 0;
+        }
+        .button:nth-child(2) {
+            top: 60px; 
+        }
+        .button:nth-child(3) {
+            top: 120px; 
+        }
+        .button:last-child {
+            top: 180px;
+        }
+		@keyframes flowerAnimation {
 			0% { transform: translateY(-100%); opacity: 0; }
 			100% { transform: translateY(100vh); opacity: 1; }
 		}
-		.heart {
+		.flower {
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			font-size: 15px;
-			color: #bd1571;
-			animation: heartAnimation 5s linear infinite;
+			font-size: 30px;
+            color: white;
+			animation: flowerAnimation 7s linear infinite;
 		}
 
 	</style>
 </head>
 
 <body>
-	<img src="hey.jpg" alt="cute-cat">
+	<h1><span>&#x2740</span>Wanna buy me some flowers?<span>&#x2740</span></h1>
+    <div class="container">
 	<button id="yesButton" class="button" onclick="showMessage(); return false;">Yes</button>
+	<button id="laterButton" class="button" onclick="">Maybe later :></button>
+    <button id="neverButton" class="button" onclick="">Sorry, never...</button>
 	<button id="noButton" class="button" onclick="moveButton()">No</button>
+    </div>
 
 	<script type="text/javascript">
 
 		function showMessage() {
-			for (let i = 0; i < 300; i++) {
-				createHeart();
+			for (let i = 0; i < 500; i++) {
+				createFlower();
 			}
-			alert("YOU ARE SO CUTE! THANKS! ^^")
+			alert("OWW THANKS! <3")
 		}
 
-		function createHeart() {
-			const heart = document.createElement("div");
-			heart.classList.add("heart");
-			heart.innerHTML = "&#10084;";
-			document.body.appendChild(heart);
+		function createFlower() {
+			const flower = document.createElement("div");
+			flower.classList.add("flower");
+			flower.innerHTML = "&#x2740;";
+			document.body.appendChild(flower);
 
 			const x = Math.random() * window.innerWidth;
 			const y = Math.random() * window.innerHeight;
-			heart.style.left = x + "px";
-			heart.style.top = y + "px";
+			flower.style.left = x + "px";
+			flower.style.top = y + "px";
 
 			setTimeout(() => {
-				heart.remove();
-			}, 5000);
+				flower.remove();
+			}, 7000);
 		}
 
 		function moveButton() {
