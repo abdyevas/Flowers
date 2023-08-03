@@ -114,7 +114,7 @@
         function changeButton() {
             var laterButton = document.getElementById("laterButton");
             laterButton.innerHTML = "Yes! Sure!<3";
-            laterButton.onclick = null;
+            laterButton.onclick = showMessage;
             setTimeout(function() {
                 showMessage(); 
             }, 100);
