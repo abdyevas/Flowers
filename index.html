@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Just a Dream</title>
+
+	<style type="text/css">
+
+		body {
+			background-image: url(flowers.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			overflow: hidden;
+		}
+		img {
+			display: block;
+			margin-left: auto;
+  			margin-right: auto;
+  			margin-top: 45px;
+  			width: 28%;
+  			border: 5px solid #eb6cb1;
+		}
+		.button {
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			display: flex;
+			width: 110px;
+			height: 33px;
+			align-items: center;
+			justify-content: center;
+			background-color: #fa7fc2;
+			color: white;
+			border: 3px solid #f04da5;
+			border-radius: 10px;
+			font-size: 18px;
+			font-family: 'Courier New', monospace;
+			font-weight: bold;
+		}
+		#yesButton {
+			left: 45%;
+		}
+		#yesButton:hover {
+			background-color: #f04da5;
+		}
+		#noButton {
+			left: 55%;
+		}
+		@keyframes heartAnimation {
+			0% { transform: translateY(-100%); opacity: 0; }
+			100% { transform: translateY(100vh); opacity: 1; }
+		}
+		.heart {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 15px;
+			color: #bd1571;
+			animation: heartAnimation 5s linear infinite;
+		}
+
+	</style>
+</head>
+
+<body>
+	<img src="hey.jpg" alt="cute-cat">
+	<button id="yesButton" class="button" onclick="showMessage(); return false;">Yes</button>
+	<button id="noButton" class="button" onclick="moveButton()">No</button>
+
+	<script type="text/javascript">
+
+		function showMessage() {
+			for (let i = 0; i < 300; i++) {
+				createHeart();
+			}
+			alert("YOU ARE SO CUTE! THANKS! ^^")
+		}
+
+		function createHeart() {
+			const heart = document.createElement("div");
+			heart.classList.add("heart");
+			heart.innerHTML = "&#10084;";
+			document.body.appendChild(heart);
+
+			const x = Math.random() * window.innerWidth;
+			const y = Math.random() * window.innerHeight;
+			heart.style.left = x + "px";
+			heart.style.top = y + "px";
+
+			setTimeout(() => {
+				heart.remove();
+			}, 5000);
+		}
+
+		function moveButton() {
+			var buttonNo = document.getElementById("noButton");
+			var x = Math.floor(Math.random() * window.innerWidth);
+			var y = Math.floor(Math.random() * window.innerHeight);
+
+			buttonNo.style.left = x + "px";
+			buttonNo.style.top = y + "px";
+		}
+
+		var buttonNo = document.getElementById("noButton");
+		buttonNo.addEventListener("mouseover", moveButton);
+	</script>
+</body>
+</html>
