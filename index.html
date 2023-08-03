@@ -27,7 +27,6 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-
         }
 		.button {
             position: absolute;
@@ -36,7 +35,8 @@
 			height: 50px;
 			align-items: center;
 			justify-content: center;
-			background-color: #fa7fc2;
+			background-color: #ffbae3;
+            text-shadow: 0 0 3px #FF0000, 0 0 3px #0000FF;
 			color: white;
 			border: 3px solid #f04da5;
 			border-radius: 10px;
@@ -60,17 +60,18 @@
             top: 180px;
         }
 		@keyframes flowerAnimation {
-			0% { transform: translateY(-100%); opacity: 0; }
-			100% { transform: translateY(100vh); opacity: 1; }
+			0% { transform: translateY(100vh); opacity: 0.8; }
+			100% { transform: translateY(-100%); opacity: 0; }
 		}
 		.flower {
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			font-size: 30px;
+			font-size: 40px;
             color: white;
-			animation: flowerAnimation 7s linear infinite;
+			animation: flowerAnimation 5s linear infinite;
+            text-shadow: 0 0 10px #FF0000, 0 0 10px #0000FF;
 		}
 
 	</style>
@@ -80,15 +81,15 @@
 	<h1><span>&#x2740</span>Wanna buy me some flowers?<span>&#x2740</span></h1>
     <div class="container">
 	<button id="yesButton" class="button" onclick="showMessage(); return false;">Yes</button>
-	<button id="laterButton" class="button" onclick="">Maybe later :></button>
-    <button id="neverButton" class="button" onclick="">Sorry, never...</button>
 	<button id="noButton" class="button" onclick="moveButton()">No</button>
+    <button id="laterButton" class="button" onclick="changeButton()">Maybe later :></button>
+    <button id="neverButton" class="button" onclick="removeButton()">Sorry, never...</button>
     </div>
 
 	<script type="text/javascript">
 
 		function showMessage() {
-			for (let i = 0; i < 500; i++) {
+			for (let i = 0; i < 300; i++) {
 				createFlower();
 			}
 			alert("OWW THANKS! <3")
@@ -107,17 +108,34 @@
 
 			setTimeout(() => {
 				flower.remove();
-			}, 7000);
-		}
+			}, 5000);
+		} 
 
-		function moveButton() {
-			var buttonNo = document.getElementById("noButton");
-			var x = Math.floor(Math.random() * window.innerWidth);
-			var y = Math.floor(Math.random() * window.innerHeight);
+        function changeButton() {
+            var laterButton = document.getElementById("laterButton");
+            laterButton.innerHTML = "Yes! Sure!<3";
+            laterButton.onclick = null;
+            setTimeout(function() {
+                showMessage(); 
+            }, 100);
+        }
 
-			buttonNo.style.left = x + "px";
-			buttonNo.style.top = y + "px";
-		}
+        function moveButton() {
+            var buttonNo = document.getElementById("noButton");
+            var maxX = window.innerWidth - buttonNo.offsetWidth;
+            var maxY = window.innerHeight - buttonNo.offsetHeight;
+
+            var x = Math.floor(Math.random() * maxX);
+            var y = Math.floor(Math.random() * maxY);
+
+            buttonNo.style.left = x + "px";
+            buttonNo.style.top = y + "px";
+        }
+
+        function removeButton() {
+            var neverButton = document.getElementById("neverButton");
+            neverButton.style.display = "none";
+        }
 
 		var buttonNo = document.getElementById("noButton");
 		buttonNo.addEventListener("mouseover", moveButton);
