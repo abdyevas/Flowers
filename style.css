@@ -1,0 +1,65 @@
+body {
+    background-image: url(flowers.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+h1 {
+    text-align: center;
+      margin-top: 60px;
+      color: white;
+    font-size: 50px;
+    font-family: 'Flower Decorative', cursive;
+    text-shadow: 0 0 10px #FF0000, 0 0 10px #0000FF;
+}
+.container {
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+.button {
+    position: absolute;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffbae3;
+    text-shadow: 0 0 3px #FF0000, 0 0 3px #0000FF;
+    color: white;
+    border: 3px solid #f04da5;
+    border-radius: 10px;
+    font-size: 19px;
+    font-family: 'Flower Decorative', cursive;
+    font-weight: bold;
+}
+button:hover {
+    background-color: #f04da5;
+}
+.button:nth-child(1) {
+    top: 0;
+}
+.button:nth-child(2) {
+    top: 60px; 
+}
+.button:nth-child(3) {
+    top: 120px; 
+}
+.button:last-child {
+    top: 180px;
+}
+@keyframes flowerAnimation {
+    0% { transform: translateY(100vh); opacity: 0.8; }
+    100% { transform: translateY(-100%); opacity: 0; }
+}
+.flower {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: white;
+    animation: flowerAnimation 5s linear infinite;
+    text-shadow: 0 0 10px #FF0000, 0 0 10px #0000FF;
+}
